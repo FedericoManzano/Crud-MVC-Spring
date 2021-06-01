@@ -1,10 +1,13 @@
 package crud.spring.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "cliente")
@@ -12,9 +15,7 @@ public class Cliente {
 
 	
 	public Cliente () {
-		this.nombre = "";
-		this.apellido = "";
-		this.correo = "";
+		
 	}
 	
 	
@@ -29,9 +30,17 @@ public class Cliente {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(length = 20)
+	@Size(min = 2, max = 20, message = "Campo nombre invalido (2 - 20) caracteres")
 	private String nombre;
+	
+	
+	@Column(length = 20)
+	@Size(min = 2, max = 20, message = "Campo apellido invalido (2 - 20) caracteres")
 	private String apellido;
 	
+	@Column(length = 40)
+	@Email
 	private String correo;
 
 	public Long getId() {

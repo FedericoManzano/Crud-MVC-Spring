@@ -4,11 +4,10 @@
 <nav>
      <div  class="nav-body fd-rojo">
        <div  class="contenedor">
-          <a  class="nav-logo">Logo</a>
+          <a  class="nav-logo">MVC</a>
           <ul  class="lista derecha">
             <li><a  href="<%= ClienteController.RAIZ %>" >Home</a></li>
             <li><a href="<%= ClienteController.path("listado") %>">Listado</a></li>
-            <li><a  href="#">Servicios</a></li>
           </ul>
         </div>
     </div>

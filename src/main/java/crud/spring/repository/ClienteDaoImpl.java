@@ -1,8 +1,6 @@
 package crud.spring.repository;
 
 import java.util.List;
-
-import javax.persistence.Query;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,5 +25,23 @@ public class ClienteDaoImpl implements ClienteDao {
 		Session ses = this.factory.getCurrentSession();
 		List<Cliente> listado = (List<Cliente>) ses.createQuery("FROM Cliente", Cliente.class).getResultList();
 		return listado;
+	}
+
+
+	@Override
+	@Transactional
+	public Cliente add(Cliente cliente) {
+		Session ses = this.factory.getCurrentSession();
+		ses.saveOrUpdate(cliente);
+		return cliente;
+	}
+
+
+	@Override
+	@Transactional
+	public Cliente findById(Long id) {
+		Session ses = this.factory.getCurrentSession();
+		Cliente cli = ses.get(Cliente.class, id);
+		return cli;
 	}
 }
